@@ -26,15 +26,28 @@ public class Main {
         }
         System.out.println("Tổng giá tiền của " + b.length + " cuốn sách là: " + sum);
 
-        // Đếm số cuốn sách sử dụng ngôn ngữ Java
-        int count = 0;
+        // Đếm số sách Programming sử dụng ngôn ngữ Java
+        // Đếm số sách Fiction có category là "Viễn tưởng 1"
+        // Đếm số sách Fiction có giá > 100.000
+        int countj = 0;
+        int countf = 0;
+        int count100 = 0;
         for (Book value : b) {
             if (value instanceof ProgrammingBook) {
                 if (((ProgrammingBook) value).getLanguage().equals("Java"))
-                    count++;
+                    countj++;
+            }
+            else if (value instanceof FictionBook){
+                if (((FictionBook) value).getCategory().equals("Viễn tưởng 1")){
+                    countf++;
+                }
+                if (((FictionBook) value).getPrice() > 100000)
+                    count100++;
             }
         }
-        System.out.println("Số cuốn sách thuộc loại Programming sử dụng ngôn ngữ Java là: " + count);
+        System.out.println("Số cuốn sách thuộc loại Programming sử dụng ngôn ngữ Java là: " + countj);
+        System.out.println("Số cuốn sách thuộc loại Fiction có thể loại 'Viễn tưởng 1' là: " + countf);
+        System.out.println("Số cuốn sách thuộc loại Fiction có giá trên 100.000 là: " + count100);
 
         // Tìm sách
         Scanner sc = new Scanner(System.in);
